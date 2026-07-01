@@ -152,3 +152,11 @@ class GameManager():
         self.start_scene(self.startup_scene)
 
         await self._main_loop(ignore_events)
+
+    def register_localisation_manager(self, manager):
+        """Allows us to set the localisation manager class."""
+        self.localisation_manager = manager
+
+    def get_localisation_manager(self):
+        """Returns the localisation manager class."""
+        return self.localisation_manager
