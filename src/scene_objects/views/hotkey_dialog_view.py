@@ -4,9 +4,11 @@ from ui.fonts import FONT_PRIMARY_XXLARGE, FONT_SECONDARY_SMALL
 
 
 class HotkeyDialogView(ModalView):
-    def __init__(self, dialog):
+    def __init__(self, dialog, localisation_manager):
         self.dialog = dialog
         super().__init__()
+
+        self.localisation_manager = localisation_manager
 
         self._title_text = FONT_PRIMARY_XXLARGE.render(
             'Hotkeys', True, Color.WHITE)

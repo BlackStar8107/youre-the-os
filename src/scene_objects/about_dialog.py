@@ -8,5 +8,5 @@ class AboutDialog(Modal):
     def __init__(self, localisation_manager):
         super().__init__(AboutDialogView(self, localisation_manager))
 
-        self.close_button = Button('Close', self.close)
+        self.close_button = Button(localisation_manager.get_string("close_button"), self.close)
         self.children.append(self.close_button)
