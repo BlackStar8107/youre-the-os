@@ -4,6 +4,7 @@
     "hard_difficulty": "Hard",
     "harder_difficulty": "Harder",
     "insane_difficulty": "Insane",
+    "custom_difficulty": "Custom",
     "close_button": "Close",
     "start_button": "Start",
     "cancel_button": "Cancel",
@@ -85,5 +86,6 @@
     ],
     "play_button": "Play",
     "how_to_play_button": "How to Play",
-    "about_button": "About"
+    "about_button": "About",
+    "hotkey_button": "Hotkeys"
 }
