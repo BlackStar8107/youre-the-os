@@ -23,18 +23,18 @@ class MainMenu(Scene):
     def setup(self):
         self._scene_objects = []
 
-        title = MainMenuTitle()
+        title = MainMenuTitle(self.localisation_manager)
         title.view.set_xy(0, 50)
         self._scene_objects.append(title)
 
-        difficulty_selection_label = DifficultySelectionLabel()
+        difficulty_selection_label = DifficultySelectionLabel(self.localisation_manager)
         difficulty_selection_label.view.set_xy(
             (self.screen.get_width() - difficulty_selection_label.view.width) / 2,
             title.view.y + title.view.height + 50)
         self._scene_objects.append(difficulty_selection_label)
 
         difficulty_level_names = list(
-            map(lambda difficulty_level: self.localisation_manager.get_string(difficulty_level.name), difficulty_levels))
+            map(lambda difficulty_level: difficulty_level.name, difficulty_levels))
         difficulty_level_names.append(self.localisation_manager.get_string("custom_difficulty"))
         self._difficulty_selector = OptionSelector(difficulty_level_names, 1)
         self._difficulty_selector.view.set_xy(
@@ -42,7 +42,7 @@ class MainMenu(Scene):
             difficulty_selection_label.view.y + difficulty_selection_label.view.height + 20)
         self._scene_objects.append(self._difficulty_selector)
 
-        play_button = Button(self.localisation_manager.get_string('Play'), self._on_start_button_click)
+        play_button = Button(self.localisation_manager.get_string('play_button'), self._on_start_button_click)
         play_button.view.set_xy(
             (self.screen.get_width() - play_button.view.width) / 2,
             self._difficulty_selector.view.y + self._difficulty_selector.view.height + 20)

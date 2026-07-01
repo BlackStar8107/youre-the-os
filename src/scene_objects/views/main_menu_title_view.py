@@ -10,13 +10,15 @@ _icon_image = pygame.image.load(path.join('assets', 'icon.png'))
 
 
 class MainMenuTitleView(Drawable):
-    def __init__(self, main_menu_title):
+    def __init__(self, main_menu_title, localisation_manager):
         self._main_menu_title = main_menu_title
         super().__init__()
 
+        self.localisation_manager = localisation_manager
+        
         self._icon = _icon_image
 
-        self._text = FONT_PRIMARY_XXLARGE.render(TITLE, True, (61, 154, 226))
+        self._text = FONT_PRIMARY_XXLARGE.render(self.localisation_manager.get_string("title"), True, (61, 154, 226))
 
     @property
     def width(self):
