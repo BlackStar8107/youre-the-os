@@ -4,12 +4,14 @@ from ui.fonts import FONT_SECONDARY_MEDIUM
 
 
 class DifficultySelectionLabelView(Drawable):
-    def __init__(self, difficulty_selection_label):
+    def __init__(self, difficulty_selection_label, localisation_manager):
         self._difficulty_selection_label = difficulty_selection_label
         super().__init__()
 
+        self.localisation_manager = localisation_manager
+
         self._text = FONT_SECONDARY_MEDIUM.render(
-            "Select Difficulty:", True, Color.WHITE)
+            self.localisation_manager.get_string("select_difficulty"), True, Color.WHITE)
 
     @property
     def width(self):

@@ -4,5 +4,5 @@ from scene_objects.views.difficulty_selection_label_view import DifficultySelect
 
 class DifficultySelectionLabel(SceneObject):
 
-    def __init__(self):
-        super().__init__(DifficultySelectionLabelView(self))
+    def __init__(self, localisation_manager):
+        super().__init__(DifficultySelectionLabelView(self, localisation_manager))
