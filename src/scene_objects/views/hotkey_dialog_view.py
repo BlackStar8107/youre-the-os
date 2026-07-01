@@ -11,43 +11,43 @@ class HotkeyDialogView(ModalView):
         self.localisation_manager = localisation_manager
 
         self._title_text = FONT_PRIMARY_XXLARGE.render(
-            'Hotkeys', True, Color.WHITE)
+            self.localisation_manager.get_string("hotkey_button"), True, Color.WHITE)
 
         self._explanation_text = FONT_SECONDARY_SMALL.render(
-            'Step up your game by using these hotkeys:', True, Color.WHITE)
+            self.localisation_manager.get_string("hotkey_tip"), True, Color.WHITE)
 
         self._binding_keys = [
-            FONT_SECONDARY_SMALL.render('SPACEBAR', True, Color.WHITE),
-            FONT_SECONDARY_SMALL.render('1-9', True, Color.WHITE),
-            FONT_SECONDARY_SMALL.render('0', True, Color.WHITE),
-            FONT_SECONDARY_SMALL.render('SHIFT + 1-6', True, Color.WHITE),
-            FONT_SECONDARY_SMALL.render('SHIFT + Click', True, Color.WHITE),
-            FONT_SECONDARY_SMALL.render('S', True, Color.WHITE),
+            FONT_SECONDARY_SMALL.render(self.localisation_manager.get_string("hotkey_space"), True, Color.WHITE),
+            FONT_SECONDARY_SMALL.render(self.localisation_manager.get_string("hotkey_num"), True, Color.WHITE),
+            FONT_SECONDARY_SMALL.render(self.localisation_manager.get_string("hotkey_zero"), True, Color.WHITE),
+            FONT_SECONDARY_SMALL.render(self.localisation_manager.get_string("hotkey_shift_num"), True, Color.WHITE),
+            FONT_SECONDARY_SMALL.render(self.localisation_manager.get_string("hotkey_shift_click"), True, Color.WHITE),
+            FONT_SECONDARY_SMALL.render(self.localisation_manager.get_string("hotkey_s_key"), True, Color.WHITE),
         ]
 
         self._binding_explanations = [
             FONT_SECONDARY_SMALL.render(
-                'Process I/O events',
+                self.localisation_manager.get_string("hotkey_space_msg"),
                 True,
                 Color.WHITE),
             FONT_SECONDARY_SMALL.render(
-                'Remove process from a CPU between #1 and #9',
+                self.localisation_manager.get_string("hotkey_num_msg"),
                 True,
                 Color.WHITE),
             FONT_SECONDARY_SMALL.render(
-                'Remove process from CPU #10',
+                self.localisation_manager.get_string("hotkey_zero_msg"),
                 True,
                 Color.WHITE),
             FONT_SECONDARY_SMALL.render(
-                'Remove process from a CPU between #11 and #16',
+                self.localisation_manager.get_string("hotkey_shift_num_msg"),
                 True,
                 Color.WHITE),
             FONT_SECONDARY_SMALL.render(
-                'Swap a whole row of memory pages at once',
+                self.localisation_manager.get_string("hotkey_shift_click_msg"),
                 True,
                 Color.WHITE),
             FONT_SECONDARY_SMALL.render(
-                'Sort Processes (once Sort button is available)',
+                self.localisation_manager.get_string("hotkey_s_key_msg"),
                 True,
                 Color.WHITE),
         ]
