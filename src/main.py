@@ -16,8 +16,8 @@ async def main():
     localisation_manager = StringLookup()
     game_manager.register_localisation_manager(localisation_manager)
 
-    main_menu_scene = MainMenu()
-    how_to_play_scene = HowToPlay()
+    main_menu_scene = MainMenu(localisation_manager)
+    how_to_play_scene = HowToPlay(localisation_manager)
 
     game_manager.register_scene(main_menu_scene)
     game_manager.register_scene(how_to_play_scene)

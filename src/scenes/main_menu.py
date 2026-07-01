@@ -11,12 +11,14 @@ from scene_objects.option_selector import OptionSelector
 from scenes.stage import Stage
 
 class MainMenu(Scene):
-    def __init__(self):
+    def __init__(self, localisation_manager):
         super().__init__('main_menu')
         self._selected_difficulty_id = None
         self._custom_config = StageConfig()
 
         self._difficulty_selector = None
+
+        self.localisation_manager = localisation_manager
 
     def setup(self):
         self._scene_objects = []
@@ -32,21 +34,21 @@ class MainMenu(Scene):
         self._scene_objects.append(difficulty_selection_label)
 
         difficulty_level_names = list(
-            map(lambda difficulty_level: difficulty_level.name, difficulty_levels))
-        difficulty_level_names.append('Custom')
+            map(lambda difficulty_level: self.localisation_manager.get_string(difficulty_level.name), difficulty_levels))
+        difficulty_level_names.append(self.localisation_manager.get_string("custom_difficulty"))
         self._difficulty_selector = OptionSelector(difficulty_level_names, 1)
         self._difficulty_selector.view.set_xy(
             (self.screen.get_width() - self._difficulty_selector.view.width) / 2,
             difficulty_selection_label.view.y + difficulty_selection_label.view.height + 20)
         self._scene_objects.append(self._difficulty_selector)
 
-        play_button = Button('Play', self._on_start_button_click)
+        play_button = Button(self.localisation_manager.get_string('Play'), self._on_start_button_click)
         play_button.view.set_xy(
             (self.screen.get_width() - play_button.view.width) / 2,
             self._difficulty_selector.view.y + self._difficulty_selector.view.height + 20)
         self._scene_objects.append(play_button)
 
-        how_to_play_button = Button('How to Play', self._start_how_to_play)
+        how_to_play_button = Button(self.localisation_manager.get_string('how_to_play_button'), self._start_how_to_play)
         how_to_play_button.view.set_xy(
             150,
             self.screen.get_height() - how_to_play_button.view.height - 100
@@ -54,14 +56,14 @@ class MainMenu(Scene):
         self._scene_objects.append(how_to_play_button)
 
         hotkey_button = Button(
-            'Hotkeys', self._open_hotkey_dialog)
+            self.localisation_manager.get_string('hotkey_button'), self._open_hotkey_dialog)
         hotkey_button.view.set_xy(
             how_to_play_button.view.x + how_to_play_button.view.width + 20,
             self.screen.get_height() - hotkey_button.view.height - 100
         )
         self._scene_objects.append(hotkey_button)
 
-        about_button = Button('About', self._open_about_dialog)
+        about_button = Button(self.localisation_manager.get_string('about_button'), self._open_about_dialog)
         about_button.view.set_xy(
             self.screen.get_width() - about_button.view.width - 150,
             self.screen.get_height() - about_button.view.height - 100

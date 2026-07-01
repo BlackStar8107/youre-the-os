@@ -168,7 +168,7 @@ _parts = [
 
 
 class HowToPlay(Scene):
-    def __init__(self):
+    def __init__(self, localisation_manager):
         super().__init__('how_to_play')
 
         self.background_color=Color.LIGHT_GREY
@@ -178,6 +178,8 @@ class HowToPlay(Scene):
         self._previous_button = None
         self._next_button = None
         self._current_time = 0
+
+        self.localisation_manager = localisation_manager
 
     def setup(self):
         self._scene_objects = []
@@ -238,3 +240,6 @@ class HowToPlay(Scene):
         self._current_time = current_time
         for scene_object in list(self._scene_objects):
             scene_object.update(current_time, events)
+
+    def translate_parts(self):
+        
