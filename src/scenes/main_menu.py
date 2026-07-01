@@ -94,10 +94,10 @@ class MainMenu(Scene):
         self.show_modal(dialog)
 
     def _open_about_dialog(self):
-        self.show_modal(AboutDialog())
+        self.show_modal(AboutDialog(self.localisation_manager))
 
     def _open_hotkey_dialog(self):
-        self.show_modal(HotkeyDialog())
+        self.show_modal(HotkeyDialog(self.localisation_manager))
 
     def _start_game(self, difficulty_level):
         if isinstance(self.modal, CustomSettingsDialog):

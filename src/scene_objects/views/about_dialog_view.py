@@ -5,8 +5,9 @@ from ui.fonts import FONT_PRIMARY_XXLARGE, FONT_SECONDARY_SMALL, FONT_SECONDARY_
 
 
 class AboutDialogView(ModalView):
-    def __init__(self, about_dialog):
+    def __init__(self, about_dialog, localisation_manager):
         self.about_dialog = about_dialog
+        self.localisation_manager = localisation_manager
         super().__init__()
 
     @ModalView.x.setter
@@ -22,38 +23,38 @@ class AboutDialogView(ModalView):
             self.y + self.height - self.about_dialog.close_button.view.height - 40)
 
         self._title_text = FONT_PRIMARY_XXLARGE.render(
-            TITLE, True, Color.WHITE)
+            self.localisation_manager.get_string("title"), True, Color.WHITE)
         self._version_text = FONT_SECONDARY_SMALL.render(
-            'Version ' + VERSION, True, Color.WHITE)
+            self.localisation_manager.get_string("version_word") + VERSION, True, Color.WHITE)
         self._copyright_text = FONT_SECONDARY_SMALL.render(
             '© ' + COPYRIGHT_YEAR + ' Pier-Luc Brault', True, Color.WHITE)
         self._license_text = FONT_SECONDARY_XSMALL.render(
-            'This game is published under the GNU General Public License Version 3.',
+            self.localisation_manager.get_string("license"),
             True,
             Color.WHITE)
         self._license_url_text = FONT_SECONDARY_XSMALL.render(
             '<https://www.gnu.org/licenses/gpl-3.0.html>', True, Color.WHITE)
         self._asset_credits_title = FONT_SECONDARY_XSMALL.render(
-            'Asset Credits and Licenses:', True, Color.WHITE)
+            self.localisation_manager.get_string("credits_and_license"), True, Color.WHITE)
         self._asset_credits = [
             FONT_SECONDARY_XSMALL.render(
-                'Game icon/logo: original image by Muhammat Sukirman (CC BY 3.0).',
+                self.localisation_manager.get_string("credit_game_icon"),
                 True,
                 Color.WHITE),
             FONT_SECONDARY_XSMALL.render(
-                'Primary font: VT323 by Peter Hull (SIL Open Font License).',
+                self.localisation_manager.get_string("credit_primary_font"),
                 True,
                 Color.WHITE),
             FONT_SECONDARY_XSMALL.render(
-                'Secondary font: Victor Mono by Rune Bjørnerås (SIL Open Font License).',
+                self.localisation_manager.get_string("credit_secondary_font"),
                 True,
                 Color.WHITE),
             FONT_SECONDARY_XSMALL.render(
-                'All emojis are from OpenMoji.org (CC BY-SA 4.0).',
+                self.localisation_manager.get_string("credit_emojis"),
                 True,
                 Color.WHITE),
             FONT_SECONDARY_XSMALL.render(
-                'Image in the "YOU GOT REBOOTED!" dialog is by Aleksandar Cvetanović (CC0).',
+                self.localisation_manager.get_string("credit_image"),
                 True,
                 Color.WHITE),
         ]
