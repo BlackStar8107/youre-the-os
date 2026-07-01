@@ -7,10 +7,14 @@ from game_info import TITLE
 from scenes.how_to_play import HowToPlay
 from scenes.main_menu import MainMenu
 from window_size import WINDOW_SIZE
+from localisation.string_lookup import StringLookup
 
 async def main():
     game_manager = GameManager()
     game_manager.window_config = WindowConfig(WINDOW_SIZE, TITLE, path.join('assets', 'icon.png'))
+
+    localisation_manager = StringLookup()
+    game_manager.register_localisation_manager(localisation_manager)
 
     main_menu_scene = MainMenu()
     how_to_play_scene = HowToPlay()
