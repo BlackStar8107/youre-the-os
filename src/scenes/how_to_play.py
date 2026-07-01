@@ -162,7 +162,6 @@ class HowToPlay(Scene):
 
         for i in range(len(_parts_text)-1):
 
-            print("i > ", i)
             part_text = self.localisation_manager.get_string(_parts_text[i])
 
             if i in _parts_animation_intervals:
@@ -178,4 +177,3 @@ class HowToPlay(Scene):
                     _parts_images[i]
                     )
                 )
-        print(self._parts[i])
