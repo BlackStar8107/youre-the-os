@@ -52,7 +52,7 @@ class StringLookup():
             self.read_localisation_file()
 
         if token not in self.translation_key:
-            return token
+            return "@#@ " + token + " @#@"
         else:
             return self.translation_key[token]
 
