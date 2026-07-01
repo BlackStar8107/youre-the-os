@@ -1,10 +1,12 @@
 {
+    "select_difficulty": "Select Difficulty:",
     "easy_difficulty": "Easy",
     "normal_difficulty": "Normal",
     "hard_difficulty": "Hard",
     "harder_difficulty": "Harder",
     "insane_difficulty": "Insane",
     "custom_difficulty": "Custom",
+
     "play_button": "Play",
     "how_to_play_button": "How to Play",
     "about_button": "About",
